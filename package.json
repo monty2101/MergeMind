@@ -1,0 +1,31 @@
+{
+  "name": "codereview-platform",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev:infra": "docker-compose up -d",
+    "dev:api": "bun run --cwd apps/api dev",
+    "dev:worker": "bun run --cwd apps/worker dev",
+    "dev:web": "bun run --cwd apps/web dev",
+    "db:generate": "bun run --cwd packages/db generate",
+    "db:migrate": "bun run --cwd packages/db migrate",
+    "db:studio": "bun run --cwd packages/db studio",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.0",
+    "@hono/zod-validator": "^0.7.6",
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.12.15",
+    "jose": "^6.2.2",
+    "pg": "^8.20.0",
+    "resend": "^6.12.2",
+    "zod": "^4.3.6"
+  }
+}
