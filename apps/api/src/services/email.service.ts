@@ -8,10 +8,10 @@ export async function sendOtpEmail(
   code: string
 ): Promise<void> {
   // In development, just log the OTP
-  // if (process.env.NODE_ENV !== "production") {
-  //   console.log(`\n📧 OTP for ${email}: ${code}\n`)
-  //   return
-  // }
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`\n📧 OTP for ${email}: ${code}\n`)
+    return
+  }
 
   await resend.emails.send({
     from: FROM,
